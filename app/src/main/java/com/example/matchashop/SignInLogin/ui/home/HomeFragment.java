@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.matchashop.SignInLogin.databinding.FragmentHomeBinding;
 import com.example.matchashop.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {

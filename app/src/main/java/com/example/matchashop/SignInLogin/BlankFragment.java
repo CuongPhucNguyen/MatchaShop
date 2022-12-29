@@ -1,5 +1,6 @@
 package com.example.matchashop.SignInLogin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +11,9 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
+import com.example.matchashop.SignInLogin.ui.home.HomeFragment;
 import com.example.matchashop.User.DBUserHelper;
 import com.example.matchashop.User.User;
 
@@ -57,6 +60,12 @@ public class BlankFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+
+                Intent intent = new Intent(fragView.getContext(), HomeFragment.class);
+                //attach some data to the intent
+                intent.putExtra("message", "Hello bottom navigation activity");
+
+                startActivity(intent);
             }
         });
 
