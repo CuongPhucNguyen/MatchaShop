@@ -22,12 +22,15 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".BottomNavigationActivity"
+            android:name=".SignInLogin.BottomNavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_bottom_navigation">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SignInLogin.LoginSignUp"
