@@ -11,9 +11,7 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
-import com.example.matchashop.SignInLogin.ui.home.HomeFragment;
 import com.example.matchashop.User.DBUserHelper;
 import com.example.matchashop.User.User;
 
@@ -22,13 +20,14 @@ import java.sql.SQLException;
 
 public class BlankFragment extends Fragment {
     private DBUserHelper dbManager;
+    View fragView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragView =  inflater.inflate(R.layout.fragment_blank,container,false);
+        fragView =  inflater.inflate(R.layout.fragment_blank,container,false);
         dbManager = new DBUserHelper(fragView.getContext());
 
         try {
@@ -61,9 +60,10 @@ public class BlankFragment extends Fragment {
                     }
                 }
 
-                Intent intent = new Intent(fragView.getContext(), HomeFragment.class);
+                Intent intent = new Intent(fragView.getContext(), BottomNavigationActivity.class);
                 //attach some data to the intent
                 intent.putExtra("message", "Hello bottom navigation activity");
+                Log.println(Log.ASSERT, "test", "reach line 67");
 
                 startActivity(intent);
             }

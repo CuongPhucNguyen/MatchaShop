@@ -24,7 +24,6 @@ public class LoginSignUp extends AppCompatActivity implements RecyclerViewInterf
     RecyclerViewUser listRecycler;
     ArrayList<User> list = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
