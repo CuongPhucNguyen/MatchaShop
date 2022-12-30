@@ -117,7 +117,20 @@ public class HomeFragment extends Fragment {
             // if no item is added in filtered list we are
             // displaying a toast message as no data found.
             Toast.makeText(this.getContext(), "No Data Found..", Toast.LENGTH_SHORT).show();
+
+
+
+
+            //Below line is to clear the recycler view of the search result
+//            adapter.nullList();
+
+
+
+
+
+
         } else {
+
             // at last we are passing that filtered
             // list to our adapter class.
             adapter.filterList(filteredlist);
