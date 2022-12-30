@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         
 
 
-//        this.getActivity().setContentView(R.layout.fragment_home);
+        // this.getActivity().setContentView(R.layout.fragment_home);
 
         // initializing our variables.
         productRV = binding.getRoot().findViewById(R.id.idRVProducts);
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
 
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu,@NonNull MenuInflater inflater) {
         // below line is to get our inflater
         // MenuInflater inflater = getMenuInflater();
 
