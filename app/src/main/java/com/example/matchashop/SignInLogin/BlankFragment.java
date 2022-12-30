@@ -61,9 +61,10 @@ public class BlankFragment extends Fragment {
                     }
                 }
 
-                Intent intent = new Intent(fragView.getContext(), HomeFragment.class);
+                Intent intent = new Intent(fragView.getContext(), BottomNavigationActivity.class);
                 //attach some data to the intent
                 intent.putExtra("message", "Hello bottom navigation activity");
+                Log.println(Log.ASSERT, "test", "reach line 67");
 
                 startActivity(intent);
             }
