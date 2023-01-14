@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matchashop.R;
 import com.example.matchashop.models.ProductModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -52,6 +54,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         ProductModel model = productModelArrayList.get(position);
         holder.productNameTV.setText(model.getProductName());
         holder.productPriceTV.setText(Double.toString(model.getProductPrice()));
+        Picasso.get().load(model.getProductPhotoTitle()).into(holder.productImage);
     }
 
     @Override
@@ -64,11 +67,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         // creating variables for our views.
         private final TextView productNameTV;
         private final TextView productPriceTV;
+        private final ImageView productImage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // initializing our views with their ids.
             productNameTV = itemView.findViewById(R.id.idTVProductName);
             productPriceTV = itemView.findViewById(R.id.idTVProductPrice);
+            productImage = itemView.findViewById(R.id.productImage);
         }
     }
 }
