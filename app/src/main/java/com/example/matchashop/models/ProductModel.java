@@ -2,24 +2,38 @@ package com.example.matchashop.models;
 
 public class ProductModel {
 
+    private int id;
     private String productName;
     private String productPhotoTitle;
-    private String productPrice;
+    private double productPrice;
     private String productDescription;
 
     // creating constructor for our variables.
-    public ProductModel(String productName, String productPhotoTitle, String productPrice, String productDescription) {
+    public ProductModel(int id, String productName, String productPhotoTitle, double productPrice, String productDescription) {
+        super();
+        this.id = id;
         this.productName = productName;
         this.productPhotoTitle = productPhotoTitle;
         this.productPrice = productPrice;
         this.productDescription = productDescription;
     }
+
+    public ProductModel(String productName, String productPhotoTitle, double productPrice, String productDescription) {
+        super();
+        this.productName = productName;
+        this.productPhotoTitle = productPhotoTitle;
+        this.productPrice = productPrice;
+        this.productDescription = productDescription;
+    }
+
     public ProductModel(String productName) {
         this.productName = productName;
         this.productPhotoTitle = "";
-        this.productPrice = "$200";
+        this.productPrice = 200;
         this.productDescription = "";
     }
+
+    public int getId() {return id;}
 
     public String getProductName() {
         return productName;
@@ -37,11 +51,11 @@ public class ProductModel {
         this.productPhotoTitle = productPhotoTitle;
     }
 
-    public String getProductPrice() {
+    public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
 

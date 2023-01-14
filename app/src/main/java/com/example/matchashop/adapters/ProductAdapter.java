@@ -51,7 +51,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         // setting data to our views of recycler view.
         ProductModel model = productModelArrayList.get(position);
         holder.productNameTV.setText(model.getProductName());
-        holder.productPriceTV.setText(model.getProductPrice());
+        holder.productPriceTV.setText(Double.toString(model.getProductPrice()));
     }
 
     @Override
