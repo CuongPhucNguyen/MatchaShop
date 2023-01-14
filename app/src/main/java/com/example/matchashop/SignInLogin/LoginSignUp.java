@@ -1,10 +1,13 @@
 package com.example.matchashop.SignInLogin;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
+import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.User.DBUserHelper;
 import com.example.matchashop.User.User;
@@ -23,13 +26,19 @@ public class LoginSignUp extends AppCompatActivity implements RecyclerViewInterf
     private DBUserHelper dbManager;
     RecyclerViewUser listRecycler;
     ArrayList<User> list = new ArrayList<>();
-
+    protected SoundBroadcastReceivers soundBroadcastReceiver;
+    protected IntentFilter intentFilter;
+    private void registerReceiver() {
+        soundBroadcastReceiver = new SoundBroadcastReceivers();
+        intentFilter = new IntentFilter(MainActivity.CLICK_SOUND);
+        this.registerReceiver(soundBroadcastReceiver, intentFilter);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
             dbManager = new DBUserHelper(this);
             dbManager.open();
-
+            registerReceiver();
             super.onCreate(savedInstanceState);
             setContentView(R.layout.login_sign_up);
             tabLayout = findViewById(R.id.tabLayout);

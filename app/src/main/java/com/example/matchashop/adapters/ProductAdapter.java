@@ -54,7 +54,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         ProductModel model = productModelArrayList.get(position);
         holder.productNameTV.setText(model.getProductName());
         holder.productPriceTV.setText(Double.toString(model.getProductPrice()));
-        Picasso.get().load(model.getProductPhotoTitle()).into(holder.productImage);
+//        Picasso.get().load(model.getProductPhotoTitle()).into(holder.productImage);
     }
 
     @Override

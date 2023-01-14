@@ -1,6 +1,7 @@
 package com.example.matchashop.SignInLogin;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
+import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.User.DBUserHelper;
 import com.example.matchashop.User.User;
@@ -40,6 +43,7 @@ public class BlankFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getActivity().sendBroadcast(new Intent(MainActivity.CLICK_SOUND));
                 EditText name = fragView.findViewById(R.id.loginUsernameUser);
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
                 User newInput = new User(name.getText().toString(), password.getText().toString(), true, true);
