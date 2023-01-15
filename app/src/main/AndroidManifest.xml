@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchaShop"
         tools:targetApi="31">
+        <service android:name=".Service.NotificationService" android:enabled="true"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="false"
