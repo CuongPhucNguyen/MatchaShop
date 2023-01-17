@@ -154,6 +154,7 @@ public class HomeFragment extends Fragment {
 //        productModelArrayList.add(new ProductModel("Fuck you"));
 //        productModelArrayList.add(new ProductModel("You! Bandit."));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         CollectionReference docRef = db.collection("products");
         //iterate through collection
         docRef.get().addOnSuccessListener(queryDocumentSnapshots -> {

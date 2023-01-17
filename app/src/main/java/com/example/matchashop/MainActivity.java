@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String CLICK_SOUND = "CLICK";
 
-
     private ActivityMainBinding binding;
 
     @Override
