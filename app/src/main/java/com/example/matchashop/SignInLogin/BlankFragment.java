@@ -20,15 +20,14 @@ import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
 import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.Service.NotificationService;
-import com.example.matchashop.User.DBUserHelper;
-import com.example.matchashop.User.User;
+import com.example.matchashop.managers.UserDatabaseManager;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.sql.SQLException;
 
 
 public class BlankFragment extends Fragment {
-    private DBUserHelper dbManager;
+    private UserDatabaseManager dbManager;
     View fragView;
     private FirebaseAuth mAuth;
 
@@ -54,7 +53,7 @@ public class BlankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragView =  inflater.inflate(R.layout.fragment_blank,container,false);
-        dbManager = new DBUserHelper(fragView.getContext());
+        dbManager = new UserDatabaseManager(fragView.getContext());
         mAuth = FirebaseAuth.getInstance();
         try {
             dbManager.open();
