@@ -22,6 +22,11 @@ import com.example.matchashop.R;
 import com.example.matchashop.adapters.ProductAdapter;
 import com.example.matchashop.databinding.FragmentHomeBinding;
 import com.example.matchashop.models.ProductModel;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -142,26 +147,44 @@ public class HomeFragment extends Fragment {
         // below line we are creating a new array list
         productModelArrayList = new ArrayList<ProductModel>();
 
-        // below line is to add data to our array list.
-        productModelArrayList.add(new ProductModel("Apple"));
-        productModelArrayList.add(new ProductModel("Banana"));
-        productModelArrayList.add(new ProductModel("Avocado"));
-        productModelArrayList.add(new ProductModel("Fuck you"));
-        productModelArrayList.add(new ProductModel("You! Bandit."));
+//        // below line is to add data to our array list.
+//        productModelArrayList.add(new ProductModel("Apple"));
+//        productModelArrayList.add(new ProductModel("Banana"));
+//        productModelArrayList.add(new ProductModel("Avocado"));
+//        productModelArrayList.add(new ProductModel("Fuck you"));
+//        productModelArrayList.add(new ProductModel("You! Bandit."));
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference docRef = db.collection("products");
+        //iterate through collection
+        docRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                //get data from document
+                ProductModel productModel = documentSnapshot.toObject(ProductModel.class);
+                //add data to array list
+                productModelArrayList.add(productModel);
+            }
+            // initializing our adapter class.
+            adapter = new ProductAdapter(productModelArrayList, this.getContext());
 
+            // setting layout manager for our recycler view.
+            productRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+            // setting adapter to our recycler view.
+            productRV.setAdapter(adapter);
+        });
         // initializing our adapter class.
-        adapter = new ProductAdapter(productModelArrayList, HomeFragment.this.getContext());
-
-        // adding layout manager to our recycler view.
-        LinearLayoutManager manager = new LinearLayoutManager(this.getContext());
-        productRV.setHasFixedSize(true);
-
-        // setting layout manager
-        // to our recycler view.
-        productRV.setLayoutManager(manager);
-
-        // setting adapter to
-        // our recycler view.
-        productRV.setAdapter(adapter);
+//        adapter = new ProductAdapter(productModelArrayList, HomeFragment.this.getContext());
+//
+//        // adding layout manager to our recycler view.
+//        LinearLayoutManager manager = new LinearLayoutManager(this.getContext());
+//        productRV.setHasFixedSize(true);
+//
+//        // setting layout manager
+//        // to our recycler view.
+//        productRV.setLayoutManager(manager);
+//
+//        // setting adapter to
+//        // our recycler view.
+//        productRV.setAdapter(adapter);
     }
 }
