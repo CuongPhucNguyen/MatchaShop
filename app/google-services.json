@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "199438021625",
+    "project_id": "matchashop-aa32b",
+    "storage_bucket": "matchashop-aa32b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199438021625:android:7a8a44fa701813a033c328",
+        "android_client_info": {
+          "package_name": "com.example.matchashop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199438021625-g3o8ogtat3j2tk6tb5gl6l13dm9rpg2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTVvcBsrj9euC16fivWyDPsMUVh9-4MLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199438021625-g3o8ogtat3j2tk6tb5gl6l13dm9rpg2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
