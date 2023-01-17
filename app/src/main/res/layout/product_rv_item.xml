@@ -18,7 +18,9 @@
             android:id="@+id/productImage"
             android:layout_width="100dp"
             android:layout_height="130dp"
-            android:src="@drawable/ic_baseline_smartphone_24"></ImageView>
+            android:src="@drawable/ic_baseline_smartphone_24">
+
+        </ImageView>
 
 
         <LinearLayout
