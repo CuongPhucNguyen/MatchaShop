@@ -73,7 +73,7 @@ public class BlankFragment extends Fragment {
                 notificationService.sendNotification("Test", "Test");
                 EditText name = fragView.findViewById(R.id.loginUsernameUser);
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
-                name.setText("test123@gmail.com");
+                name.setText("test2@gmail.com");
                 password.setText("123456");
 //                User newInput = new User(name.getText().toString(), password.getText().toString(), true, true);
 //                if (!DBUserHelper.checkIfExisted(dbManager.fetchByName(name.getText().toString()))) {
