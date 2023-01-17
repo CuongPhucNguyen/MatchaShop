@@ -33,13 +33,12 @@
                     android:text="Username" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName6"
+                    android:id="@+id/regName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:text="Name" />
+                    android:minHeight="48dp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -52,13 +51,12 @@
                     android:text="Email" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/regEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:text="Name" />
+                    android:minHeight="48dp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -71,37 +69,22 @@
                     android:text="Password" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName5"
+                    android:id="@+id/regPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:text="Name" />
+                    android:minHeight="48dp" />
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="30dp" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Repeat password" />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:text="Name" />
             </LinearLayout>
         </ScrollView>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/regButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="70dp"
