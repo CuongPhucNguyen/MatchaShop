@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matchashop.R;
-import com.example.matchashop.User.User;
+import com.example.matchashop.models.User;
 
 import java.util.ArrayList;
 

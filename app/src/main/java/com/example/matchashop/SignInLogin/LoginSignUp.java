@@ -9,8 +9,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
 import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
-import com.example.matchashop.User.DBUserHelper;
-import com.example.matchashop.User.User;
+import com.example.matchashop.managers.UserDatabaseManager;
+import com.example.matchashop.models.User;
 import com.example.matchashop.User.UserListCard.RecyclerViewInterface;
 import com.example.matchashop.User.UserListCard.RecyclerViewUser;
 import com.google.android.material.tabs.TabLayout;
@@ -23,7 +23,7 @@ public class LoginSignUp extends AppCompatActivity implements RecyclerViewInterf
     TabLayout tabLayout;
     ViewPager2 viewPager2;
     VPAdapter vpAdapter;
-    private DBUserHelper dbManager;
+    private UserDatabaseManager dbManager;
     RecyclerViewUser listRecycler;
     ArrayList<User> list = new ArrayList<>();
     protected SoundBroadcastReceivers soundBroadcastReceiver;
@@ -36,7 +36,7 @@ public class LoginSignUp extends AppCompatActivity implements RecyclerViewInterf
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
-            dbManager = new DBUserHelper(this);
+            dbManager = new UserDatabaseManager(this);
             dbManager.open();
             registerReceiver();
             super.onCreate(savedInstanceState);

@@ -1,4 +1,4 @@
-package com.example.matchashop.User;
+package com.example.matchashop.models;
 
 public class User {
     public String Username;

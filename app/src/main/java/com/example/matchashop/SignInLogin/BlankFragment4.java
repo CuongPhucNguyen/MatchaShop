@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matchashop.R;
-import com.example.matchashop.User.DBUserHelper;
-import com.example.matchashop.User.User;
+import com.example.matchashop.managers.UserDatabaseManager;
+import com.example.matchashop.models.User;
 import com.example.matchashop.User.UserListCard.RecyclerViewInterface;
 import com.example.matchashop.User.UserListCard.RecyclerViewUser;
 
@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BlankFragment4 extends Fragment implements RecyclerViewInterface {
-    DBUserHelper dbManager;
+    UserDatabaseManager dbManager;
     View inflate;
     ArrayList<User> list = new ArrayList<>();
     RecyclerViewUser listRecycler;
@@ -35,7 +35,7 @@ public class BlankFragment4 extends Fragment implements RecyclerViewInterface {
     public void onResume(){
         super.onResume();
         try {
-            dbManager = new DBUserHelper(inflate.getContext());
+            dbManager = new UserDatabaseManager(inflate.getContext());
             dbManager.open();
             Cursor entries = dbManager.fetch();
             list.clear();

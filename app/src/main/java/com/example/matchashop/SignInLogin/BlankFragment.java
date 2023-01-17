@@ -2,7 +2,6 @@ package com.example.matchashop.SignInLogin;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -15,18 +14,17 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
 import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.Service.NotificationService;
-import com.example.matchashop.User.DBUserHelper;
-import com.example.matchashop.User.User;
+import com.example.matchashop.managers.UserDatabaseManager;
+import com.example.matchashop.models.User;
 
 import java.sql.SQLException;
 
 
 public class BlankFragment extends Fragment {
-    private DBUserHelper dbManager;
+    private UserDatabaseManager dbManager;
     View fragView;
     private boolean serviceConnected = false;
     private NotificationService notificationService;
@@ -50,7 +48,7 @@ public class BlankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragView =  inflater.inflate(R.layout.fragment_blank,container,false);
-        dbManager = new DBUserHelper(fragView.getContext());
+        dbManager = new UserDatabaseManager(fragView.getContext());
 
         try {
             dbManager.open();
@@ -70,7 +68,7 @@ public class BlankFragment extends Fragment {
                 EditText name = fragView.findViewById(R.id.loginUsernameUser);
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
                 User newInput = new User(name.getText().toString(), password.getText().toString(), true, true);
-                if (!DBUserHelper.checkIfExisted(dbManager.fetchByName(name.getText().toString()))) {
+                if (!UserDatabaseManager.checkIfExisted(dbManager.fetchByName(name.getText().toString()))) {
                     try {
                         Log.d("CREATION", "insert");
                         dbManager.insert(newInput);
