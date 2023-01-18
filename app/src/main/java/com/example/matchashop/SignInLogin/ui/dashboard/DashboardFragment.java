@@ -1,6 +1,7 @@
 package com.example.matchashop.SignInLogin.ui.dashboard;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +33,15 @@ public class DashboardFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        this.getActivity().setContentView(R.layout.fragment_dashboard);
+//        this.getActivity().setContentView(R.layout.fragment_dashboard);
 
-        TextView textView = this.getActivity().findViewById(R.id.userName);
-        TextView textView1 = this.getActivity().findViewById(R.id.userEmail);
-        ImageView image = this.getActivity().findViewById(R.id.userImage);
+        TextView textView = root.findViewById(R.id.userName);
+        TextView textView1 = root.findViewById(R.id.userEmail);
+        ImageView image = root.findViewById(R.id.userImage);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
+
         db.collection("users").document(uid).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 UserModel user = task.getResult().toObject(UserModel.class);

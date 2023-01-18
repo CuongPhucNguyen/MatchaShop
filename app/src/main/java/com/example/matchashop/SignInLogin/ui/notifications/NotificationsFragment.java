@@ -26,7 +26,7 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        this.getActivity().setContentView(R.layout.fragment_notifications);
+//        this.getActivity().setContentView(R.layout.fragment_notifications);
 
         return root;
     }
