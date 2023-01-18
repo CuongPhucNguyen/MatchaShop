@@ -105,7 +105,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         ProductModel clickedItem = productModelArrayList.get(position);
-                        productQuantity product = new productQuantity(productRef.get(position), productQuantity);
+                        com.example.matchashop.models.productQuantity product = new productQuantity(productRef.get(position), productQuantity);
                         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                         String uid = firebaseAuth.getCurrentUser().getUid();
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
