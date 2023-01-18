@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.matchashop.R;
 import com.example.matchashop.models.OrderModel;
 import com.example.matchashop.models.ProductModel;
+import com.example.matchashop.models.UserModel;
 import com.example.matchashop.models.productQuantity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -60,6 +62,23 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
                         holder.productPrice.setText(String.valueOf(productModel.getProductPrice() * productQuantityArrayList.get(position).getQuantity()));
                         holder.productQuantity.setText(String.valueOf(productQuantityArrayList.get(position).getQuantity()));
                         Picasso.get().load(productModel.getProductPhotoTitle()).into(holder.productImage);
+                        holder.removeBtn.setOnClickListener(v -> {
+                            String uid = firebaseAuth.getCurrentUser().getUid();
+                            db.collection("users").document(uid).get().addOnCompleteListener(task1 -> {
+                                if (task1.isSuccessful()) {
+                                    UserModel user = task1.getResult().toObject(UserModel.class);
+                                    for (int i = 0; i < user.getCart().size(); i++) {
+                                        if (user.getCart().get(i).getProductId().equals(productQuantityArrayList.get(position).getProductId())) {
+                                            user.getCart().remove(i);
+                                            db.collection("users").document(uid).set(user);
+                                            productQuantityArrayList.remove(position);
+                                            notifyDataSetChanged();
+                                        }
+                                    }
+
+                                }
+                            });
+                        });
                     }
                 }
             } else {
@@ -82,7 +101,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         private final ImageView productImage;
         private final ImageView addBtn;
         private final ImageView subtractBtn;
-        private final ImageView removeBtn;
+        private final Button removeBtn;
 
         public ViewHolder(@NonNull View itemView, ArrayList<productQuantity> productQuantityArrayList) {
             super(itemView);
