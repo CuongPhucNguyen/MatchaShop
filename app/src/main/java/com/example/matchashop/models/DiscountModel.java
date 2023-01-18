@@ -3,37 +3,40 @@ package com.example.matchashop.models;
 import java.util.ArrayList;
 
 public class DiscountModel {
-    public String DiscountName;
-    public String DiscountCode;
-    public String DiscountDescription;
-    public String DiscountValue;
-    public String DiscountStartDate;
-    public String DiscountEndDate;
-    public int Reoccuring;
-    public ArrayList<ProductModel> DiscountProducts;
+    private String DiscountName;
+    private String DiscountCode;
+    private int DiscountPercentage;
 
-    //Setters
-    public void setDiscountName(String DiscountName) {
-        this.DiscountName = DiscountName;
+    public DiscountModel(String discountName, String discountCode, int discountPercentage) {
+        DiscountName = discountName;
+        DiscountCode = discountCode;
+        DiscountPercentage = discountPercentage;
     }
 
-    public void setDiscountCode(String DiscountCode) {
-        this.DiscountCode = DiscountCode;
+    public DiscountModel() {
     }
 
-    public void setDiscountDescription(String DiscountDescription) {
-        this.DiscountDescription = DiscountDescription;
+    public String getDiscountName() {
+        return DiscountName;
     }
 
-    public void setDiscountValue(String DiscountValue) {
-        this.DiscountValue = DiscountValue;
+    public void setDiscountName(String discountName) {
+        DiscountName = discountName;
     }
 
-    public void setDiscountEndDate(String DiscountEndDate) {
-        this.DiscountEndDate = DiscountEndDate;
+    public String getDiscountCode() {
+        return DiscountCode;
     }
 
-    public void setDiscountProducts(ArrayList<ProductModel> DiscountProducts) {
-        this.DiscountProducts = DiscountProducts;
+    public void setDiscountCode(String discountCode) {
+        DiscountCode = discountCode;
+    }
+
+    public int getDiscountPercentage() {
+        return DiscountPercentage;
+    }
+
+    public void setDiscountPercentage(int discountPercentage) {
+        DiscountPercentage = discountPercentage;
     }
 }
