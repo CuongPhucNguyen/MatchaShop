@@ -1,99 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragments.dashboard.DashboardFragment">
+    tools:context=".MainFragments.dashboard.DashboardFragment"
+    android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        app:cardCornerRadius="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#96FFEF"
-        app:strokeWidth="5dp">
+        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/userImage"
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp">
+
+            <ImageView
+                android:id="@+id/userImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:src="@drawable/ic_baseline_person_24"
+                android:scaleType="centerCrop"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:src="@tools:sample/avatars" />
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp">
 
-    </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/userEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/MyCart"
+                android:id="@+id/myOrders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="my cart" />
-        </LinearLayout>
+                android:background="@color/white"
+                android:text="ORDERS"
+                android:textSize="16dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/profile"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Profile" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:layout_height="20dp" />
 
             <Button
                 android:id="@+id/favorite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="favorite" />
-        </LinearLayout>
+                android:text="FAVORITE PRODUCTS"
+                android:textSize="16dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
             <Button
                 android:id="@+id/currentOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Current order" />
-        </LinearLayout>
+                android:textSize="16dp"
+                android:text="SHOPPING MONEY" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
             <Button
                 android:id="@+id/setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="16dp"
                 android:text="setting" />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,24 +132,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="261dp"
-        android:layout_height="244dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="2dp">
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name" />
 
-        <TextView
-            android:id="@+id/userEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
