@@ -1,12 +1,9 @@
-package com.example.matchashop.SignInLogin.ui.order;
+package com.example.matchashop.SignInLogin.ui.card;
 
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,28 +20,20 @@ import android.widget.Toast;
 import com.example.matchashop.R;
 import com.example.matchashop.Service.NotificationService;
 import com.example.matchashop.adapters.OrderAdapter;
-import com.example.matchashop.adapters.ProductAdapter;
+import com.example.matchashop.databinding.FragmentCardBinding;
 import com.example.matchashop.models.OrderModel;
 import com.example.matchashop.models.ProductModel;
-import com.example.matchashop.models.User;
 import com.example.matchashop.models.UserModel;
 import com.example.matchashop.models.productQuantity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.example.matchashop.databinding.FragmentOrderBinding;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 
-public class OrderFragment extends Fragment {
-    public FragmentOrderBinding binding;
+public class CardFragment extends Fragment {
+    public FragmentCardBinding binding;
 
 
     public View fragView;
@@ -81,9 +67,9 @@ public class OrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentOrderBinding.inflate(inflater, container, false);
+        binding = FragmentCardBinding.inflate(inflater, container, false);
         fragView = binding.getRoot();
-        OrderViewModel orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+        CardViewModel orderViewModel = new ViewModelProvider(this).get(CardViewModel.class);
 
 
         orderRV = binding.getRoot().findViewById(R.id.orderRecyclerView);

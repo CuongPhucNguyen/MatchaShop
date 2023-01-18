@@ -1,14 +1,14 @@
-package com.example.matchashop.SignInLogin.ui.order;
+package com.example.matchashop.SignInLogin.ui.card;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class OrderViewModel  extends ViewModel {
+public class CardViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public OrderViewModel() {
+    public CardViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is order fragment");
     }

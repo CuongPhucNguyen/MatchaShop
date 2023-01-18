@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_order"
-        android:name="com.example.matchashop.SignInLogin.ui.order.OrderFragment"
+        android:name="com.example.matchashop.SignInLogin.ui.card.CardFragment"
         android:label="@string/title_order"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_card" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
