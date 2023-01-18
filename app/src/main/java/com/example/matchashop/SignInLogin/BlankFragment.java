@@ -24,7 +24,6 @@ import java.sql.SQLException;
 
 
 public class BlankFragment extends Fragment {
-    private UserDatabaseManager dbManager;
     View fragView;
     private FirebaseAuth mAuth;
 
@@ -50,13 +49,7 @@ public class BlankFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragView =  inflater.inflate(R.layout.fragment_blank,container,false);
-        dbManager = new UserDatabaseManager(fragView.getContext());
         mAuth = FirebaseAuth.getInstance();
-        try {
-            dbManager.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         Intent intent = new Intent(getContext(), NotificationService.class);
         getActivity().bindService(intent, connection, getActivity().BIND_AUTO_CREATE);
         getActivity().startService(intent);
@@ -71,23 +64,6 @@ public class BlankFragment extends Fragment {
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
                 name.setText("test2@gmail.com");
                 password.setText("123456");
-//                User newInput = new User(name.getText().toString(), password.getText().toString(), true, true);
-//                if (!DBUserHelper.checkIfExisted(dbManager.fetchByName(name.getText().toString()))) {
-//                    try {
-//                        Log.d("CREATION", "insert");
-//                        dbManager.insert(newInput);
-//                    } catch (SQLException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                else {
-//                    try {
-//                        Log.d("CREATION", "update " + dbManager.fetchByName(newInput.Username).getString(0));
-//                        dbManager.update(Long.parseLong(dbManager.fetchByName(newInput.Username).getString(0)),newInput);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
                 mAuth.signInWithEmailAndPassword(name.getText().toString(), password.getText().toString()).addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
                         Log.d("CREATION", "signInWithEmail:success");
@@ -99,13 +75,6 @@ public class BlankFragment extends Fragment {
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
-
-//                Intent intent = new Intent(fragView.getContext(), BottomNavigationActivity.class);
-//                //attach some data to the intent
-//                intent.putExtra("message", "Hello bottom navigation activity");
-//                Log.println(Log.ASSERT, "test", "reach line 67");
-//
-//                startActivity(intent);
             }
         });
 
