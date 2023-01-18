@@ -1,140 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Space
+        android:id="@+id/space"
         android:layout_width="wrap_content"
-        android:layout_height="50dp">
-
-    </Space>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Item Cost: "
-            android:textSize="20dp"
-            android:layout_marginStart="20dp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:text="Item Cost"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginEnd="20dp">
-
-        </TextView>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Delivery Cost: "
-            android:textSize="20dp"
-            android:layout_marginStart="20dp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:text="Ship Cost"
-            android:textSize="20dp"
-            android:textAlignment="viewEnd"
-            android:textStyle="bold"
-            android:layout_marginEnd="20dp">
-
-        </TextView>
-
-    </LinearLayout>
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="50dp">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderRecyclerView">
 
     </Space>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Item Cost: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/couponCode"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderRecyclerView">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    </TextView>
 
-            android:text="Total: "
-            android:textSize="25dp"
-            android:layout_marginStart="20dp"
-            android:textStyle="bold">
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Item Cost"
+        android:textAlignment="textEnd"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6">
 
-        </TextView>
+    </TextView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:text="cost"
-            android:textSize="25dp"
-            android:textAlignment="textEnd"
-            android:textStyle="bold"
-            android:layout_marginEnd="20dp">
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
 
-        </TextView>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Discount Code:"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/couponCode"
+        app:layout_constraintEnd_toStartOf="@+id/couponCode"
+        app:layout_constraintStart_toStartOf="parent">
 
-    </LinearLayout>
+    </TextView>
+
+    <EditText
+        android:id="@+id/couponCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:text="Apply coupon"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/couponCode" />
+
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="49dp"
+        android:text="Total: "
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/purchaseButton"
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/space2"
+        app:layout_constraintTop_toBottomOf="@+id/button2">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:text="cost"
+        android:textAlignment="textEnd"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/button2">
+
+    </TextView>
+
 
     <Space
+        android:id="@+id/space2"
         android:layout_width="wrap_content"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/purchaseButton"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView9">
 
     </Space>
 
 
     <Button
         android:id="@+id/purchaseButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="CHECK OUT">
+        android:text="CHECK OUT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
 
     </Button>
 
 
-
-
-
-
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
