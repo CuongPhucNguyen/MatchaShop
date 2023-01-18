@@ -39,7 +39,8 @@ public class CardFragment extends Fragment {
     public View fragView;
     private FirebaseAuth mAuth;
     private RecyclerView orderRV;
-
+    private boolean isDiscounted;
+    private int discount;
 
     public ArrayList<productQuantity> productQuantityArrayList;
     public OrderAdapter adapter;
@@ -61,6 +62,7 @@ public class CardFragment extends Fragment {
         }
 
     };
+
 
 
     @Override
@@ -140,9 +142,14 @@ public class CardFragment extends Fragment {
                }
            });
         });
-        Log.d("TAG", "OrderFragment: got to 105");
         return fragView;
     }
+
+    private void calculatePrice() {
+
+    }
+
+
 
     private void buildRecyclerView() {
 
