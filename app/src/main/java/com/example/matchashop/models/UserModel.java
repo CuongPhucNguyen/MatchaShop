@@ -7,13 +7,14 @@ public class UserModel {
     private String Email;
     private String userImgURL;
     private List<OrderModel> orders;
-    private CartModel cart;
+    private List<productQuantity> cart;
+
 
 
     public UserModel() {
     }
 
-    public UserModel(String username, String email, String userImgURL, List<OrderModel> orders, CartModel cart) {
+    public UserModel(String username, String email, String userImgURL, List<OrderModel> orders, List<productQuantity> cart) {
         Username = username;
         Email = email;
         this.userImgURL = userImgURL;
@@ -53,11 +54,11 @@ public class UserModel {
         this.orders = orders;
     }
 
-    public CartModel getCart() {
+    public List<productQuantity> getCart() {
         return cart;
     }
 
-    public void setCart(CartModel cart) {
+    public void setCart(List<productQuantity> cart) {
         this.cart = cart;
     }
 }
