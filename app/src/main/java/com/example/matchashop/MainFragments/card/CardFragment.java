@@ -15,12 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.matchashop.R;
 import com.example.matchashop.Service.NotificationService;
 import com.example.matchashop.adapters.OrderAdapter;
 import com.example.matchashop.databinding.FragmentCardBinding;
+import com.example.matchashop.models.DiscountModel;
 import com.example.matchashop.models.OrderModel;
 import com.example.matchashop.models.ProductModel;
 import com.example.matchashop.models.UserModel;
@@ -116,13 +119,15 @@ public class CardFragment extends Fragment {
                                        for (productQuantity productQuantity : cart) {
                                            if (productQuantity.getProductId().equals(document1.getId())) {
                                                   ProductModel productModel = document1.toObject(ProductModel.class);
-                                                   price += productQuantity.getQuantity() * productModel.getProductPrice();
                                                    orderList.add(productQuantity);
 
                                            }
                                        }
                                    }
-                                   OrderModel orderModel = new OrderModel(orderList, price);
+                                   TextView textView = (TextView) binding.getRoot().findViewById(R.id.finalCost);
+                                   String finalCost = textView.getText().toString();
+                                   Double finalCostDouble = Double.parseDouble(finalCost);
+                                   OrderModel orderModel = new OrderModel(orderList, finalCostDouble);
                                    userModel.setCart(new ArrayList<>());
                                    order.add(orderModel);
                                    userModel.setOrders(order);
@@ -142,11 +147,92 @@ public class CardFragment extends Fragment {
                }
            });
         });
+
+        Button couponBtn = (Button) binding.getRoot().findViewById(R.id.applyCoupon);
+        couponBtn.setOnClickListener(v -> {
+            applyDiscount();
+        });
+        calculatePrice();
         return fragView;
+    }
+    private void applyDiscount()
+    {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        EditText editText = (EditText) binding.getRoot().findViewById(R.id.couponCode);
+        String code = editText.getText().toString();
+        if(!code.isEmpty()) {
+            db.collection("coupons").get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult()) {
+                        if (document.exists()) {
+                            DiscountModel discountModel = document.toObject(DiscountModel.class);
+                            if(discountModel.getDiscountCode().equals(code))
+                            {
+                                isDiscounted = true;
+                                discount = discountModel.getDiscountPercentage();
+                                Toast.makeText(getContext(), "Discount applied", Toast.LENGTH_SHORT).show();
+                                calculatePrice();
+                                break;
+                            }
+                        }
+                    }
+                    if(!isDiscounted)
+                    {
+                        Toast.makeText(getContext(), "Invalid coupon code", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.d("TAG", "Error getting documents: ", task.getException());
+                }
+            });
+        }
+        else {
+            Toast.makeText(getContext(), "Coupon code can't be empty!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void calculatePrice() {
-
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users").document(uid).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    UserModel userModel = document.toObject(UserModel.class);
+                    ArrayList<productQuantity> cart = (ArrayList<productQuantity>) userModel.getCart();
+                    db.collection("products").get().addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful()) {
+                            double price = 0;
+                            for (DocumentSnapshot document1 : task1.getResult()) {
+                                for (productQuantity productQuantity : cart) {
+                                    if (productQuantity.getProductId().equals(document1.getId())) {
+                                        ProductModel productModel = document1.toObject(ProductModel.class);
+                                        price += productQuantity.getQuantity() * productModel.getProductPrice();
+                                    }
+                                }
+                            }
+                            TextView totalPrice = (TextView) binding.getRoot().findViewById(R.id.itemCosts);
+                            totalPrice.setText("Total Price: " + price);
+                            TextView finalCost = (TextView) binding.getRoot().findViewById(R.id.finalCost);
+                            if(isDiscounted)
+                            {
+                                finalCost.setText(String.valueOf(price - (price * (discount * 0.01))));
+                            }
+                            else {
+                                finalCost.setText(String.valueOf(price));
+                            }
+                        } else {
+                            Log.d("TAG", "Error getting documents: ", task1.getException());
+                        }
+                    });
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
     }
 
 
