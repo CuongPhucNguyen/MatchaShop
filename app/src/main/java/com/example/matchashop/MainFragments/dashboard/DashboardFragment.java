@@ -1,9 +1,11 @@
 package com.example.matchashop.MainFragments.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.matchashop.MainFragments.dashboard.AddProducts.AddProduct;
 import com.example.matchashop.R;
 import com.example.matchashop.models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +43,15 @@ public class DashboardFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
+
+        Button addProduct = root.findViewById(R.id.addProduct);
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddProduct.class);
+                startActivity(intent);
+            }
+        });
 
         db.collection("users").document(uid).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
