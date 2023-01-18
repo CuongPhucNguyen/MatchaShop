@@ -14,10 +14,12 @@ import com.example.matchashop.R;
 import com.example.matchashop.models.CartModel;
 import com.example.matchashop.models.OrderModel;
 import com.example.matchashop.models.UserModel;
+import com.example.matchashop.models.productQuantity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BlankFragment2 extends Fragment {
     private FirebaseAuth mAuth;
@@ -54,7 +56,7 @@ public class BlankFragment2 extends Fragment {
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
                             db.collection("users").document(mAuth.getCurrentUser().getUid()).set(new UserModel(nameText, emailText,
                                     "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Twemoji_1f600.svg/1200px-Twemoji_1f600.svg.png",
-                                    new ArrayList<OrderModel>(), new CartModel()));
+                                    new ArrayList<OrderModel>(), new ArrayList<productQuantity>()));
                         } else {
                             Toast.makeText(signUpView.getContext(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

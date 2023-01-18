@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-        setHasOptionsMenu(true);//Make sure you have this line of code.
+//        setHasOptionsMenu(true);//Make sure you have this line of code.
         View root = binding.getRoot();
         
         
@@ -156,16 +156,18 @@ public class HomeFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         CollectionReference docRef = db.collection("products");
+        ArrayList<String> idList = new ArrayList<String>();
         //iterate through collection
         docRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                 //get data from document
                 ProductModel productModel = documentSnapshot.toObject(ProductModel.class);
                 //add data to array list
+                idList.add(documentSnapshot.getId());
                 productModelArrayList.add(productModel);
             }
             // initializing our adapter class.
-            adapter = new ProductAdapter(productModelArrayList, this.getContext());
+            adapter = new ProductAdapter(productModelArrayList, this.getContext(), idList);
 
             // setting layout manager for our recycler view.
             productRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
