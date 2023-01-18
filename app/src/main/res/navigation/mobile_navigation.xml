@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.matchashop.SignInLogin.ui.home.HomeFragment"
+        android:name="com.example.matchashop.MainFragments.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_order"
-        android:name="com.example.matchashop.SignInLogin.ui.card.CardFragment"
+        android:name="com.example.matchashop.MainFragments.card.CardFragment"
         android:label="@string/title_order"
         tools:layout="@layout/fragment_card" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.matchashop.SignInLogin.ui.dashboard.DashboardFragment"
+        android:name="com.example.matchashop.MainFragments.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.matchashop.SignInLogin.ui.notifications.NotificationsFragment"
+        android:name="com.example.matchashop.MainFragments.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

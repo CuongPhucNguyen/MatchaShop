@@ -1,4 +1,4 @@
-package com.example.matchashop.SignInLogin.ui.dashboard;
+package com.example.matchashop.MainFragments.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

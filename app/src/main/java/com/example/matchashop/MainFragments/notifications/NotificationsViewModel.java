@@ -1,4 +1,4 @@
-package com.example.matchashop.SignInLogin.ui.notifications;
+package com.example.matchashop.MainFragments.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

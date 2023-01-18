@@ -1,7 +1,6 @@
-package com.example.matchashop.SignInLogin.ui.dashboard;
+package com.example.matchashop.MainFragments.dashboard;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.matchashop.R;
-import com.example.matchashop.databinding.FragmentDashboardBinding;
 import com.example.matchashop.models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
+import com.example.matchashop.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
 

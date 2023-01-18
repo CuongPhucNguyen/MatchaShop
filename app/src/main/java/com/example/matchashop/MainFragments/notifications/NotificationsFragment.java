@@ -1,17 +1,14 @@
-package com.example.matchashop.SignInLogin.ui.notifications;
+package com.example.matchashop.MainFragments.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-
-import com.example.matchashop.R;
 import com.example.matchashop.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {

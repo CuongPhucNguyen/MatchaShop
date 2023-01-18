@@ -1,4 +1,4 @@
-package com.example.matchashop.SignInLogin.ui.home;
+package com.example.matchashop.MainFragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,9 +22,7 @@ import com.example.matchashop.R;
 import com.example.matchashop.adapters.ProductAdapter;
 import com.example.matchashop.databinding.FragmentHomeBinding;
 import com.example.matchashop.models.ProductModel;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
