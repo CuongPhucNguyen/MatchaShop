@@ -13,14 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matchashop.R;
-import com.example.matchashop.models.OrderModel;
 import com.example.matchashop.models.ProductModel;
 import com.example.matchashop.models.UserModel;
 import com.example.matchashop.models.productQuantity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +36,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item_with_remove, parent, false);
         return new ViewHolder(view, productQuantityArrayList);
     }
 
