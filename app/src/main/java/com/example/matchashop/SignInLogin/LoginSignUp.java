@@ -9,8 +9,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
 import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
-import com.example.matchashop.managers.UserDatabaseManager;
-import com.example.matchashop.models.User;
 import com.example.matchashop.User.UserListCard.RecyclerViewInterface;
 import com.example.matchashop.User.UserListCard.RecyclerViewUser;
 import com.google.android.material.tabs.TabLayout;

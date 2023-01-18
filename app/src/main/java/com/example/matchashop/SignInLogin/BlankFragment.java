@@ -2,7 +2,6 @@ package com.example.matchashop.SignInLogin;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -16,11 +15,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
 import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.Service.NotificationService;
-import com.example.matchashop.managers.UserDatabaseManager;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.sql.SQLException;
