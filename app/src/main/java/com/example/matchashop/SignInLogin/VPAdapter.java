@@ -18,10 +18,6 @@ public class VPAdapter extends FragmentStateAdapter {
                 return new BlankFragment();
             case 1:
                 return new BlankFragment2();
-            case 2:
-                return new BlankFragment3();
-            case 3:
-                return new BlankFragment4();
             default:
                 return new BlankFragment();
         }
@@ -30,6 +26,6 @@ public class VPAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 2;
     }
 }

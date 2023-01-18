@@ -1,4 +1,4 @@
-package com.example.matchashop.SignInLogin.ui.card;
+package com.example.matchashop.MainFragments.card;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

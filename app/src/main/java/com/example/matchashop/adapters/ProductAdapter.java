@@ -11,15 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.matchashop.Interfaces.ProductInterface;
 import com.example.matchashop.R;
 import com.example.matchashop.models.ProductModel;
-import com.example.matchashop.models.User;
 import com.example.matchashop.models.UserModel;
 import com.example.matchashop.models.productQuantity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 

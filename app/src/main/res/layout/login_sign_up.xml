@@ -34,19 +34,6 @@
                 tools:layout_editor_absoluteX="204dp"
                 tools:layout_editor_absoluteY="3dp" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin login"
-                tools:layout_editor_absoluteX="204dp"
-                tools:layout_editor_absoluteY="3dp" />
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User list"
-                tools:layout_editor_absoluteX="204dp"
-                tools:layout_editor_absoluteY="3dp" />
-
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
