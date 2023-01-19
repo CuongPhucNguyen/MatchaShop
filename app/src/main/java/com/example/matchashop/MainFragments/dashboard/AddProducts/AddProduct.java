@@ -32,6 +32,13 @@ public class AddProduct extends AppCompatActivity {
         ImageView productImagePreview = findViewById(R.id.productPreview);
         Button submitProduct = findViewById(R.id.submitProduct);
 
+
+        productName.setHint("Product Name");
+        productPrice.setHint("Product Price");
+        productDescription.setHint("Product Description");
+        productImage.setHint("https://i.imgur.com/jSC0lG1.jpg");
+        Picasso.get().load("https://i.imgur.com/jSC0lG1.jpg").into(productImagePreview);
+
         productImage.addTextChangedListener(new TextWatcher(){
 
             @Override
