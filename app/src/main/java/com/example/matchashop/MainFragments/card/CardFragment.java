@@ -1,6 +1,8 @@
 package com.example.matchashop.MainFragments.card;
 
 import android.content.ComponentName;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 
@@ -19,6 +21,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matchashop.BroadcastReceivers.SoundBroadcastReceivers;
+import com.example.matchashop.MainActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.Service.NotificationService;
 import com.example.matchashop.adapters.OrderAdapter;
@@ -33,6 +37,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class CardFragment extends Fragment {
@@ -44,9 +49,17 @@ public class CardFragment extends Fragment {
     private RecyclerView orderRV;
     private boolean isDiscounted;
     private int discount;
-
+    protected SoundBroadcastReceivers soundBroadcastReceiver;
+    protected IntentFilter intentFilter;
+    private void registerReceiver() {
+        soundBroadcastReceiver = new SoundBroadcastReceivers();
+        intentFilter = new IntentFilter(MainActivity.CHECKOUT_SOUND);
+        intentFilter.addAction(MainActivity.COUPON_SOUND);
+        this.getActivity().registerReceiver(soundBroadcastReceiver, intentFilter);
+    }
     public ArrayList<productQuantity> productQuantityArrayList;
     public OrderAdapter adapter;
+
 
     private boolean serviceConnected = false;
     private NotificationService notificationService;
@@ -75,8 +88,10 @@ public class CardFragment extends Fragment {
         binding = FragmentCardBinding.inflate(inflater, container, false);
         fragView = binding.getRoot();
         CardViewModel orderViewModel = new ViewModelProvider(this).get(CardViewModel.class);
-
-
+        registerReceiver();
+        Intent intent = new Intent(getContext(), NotificationService.class);
+        getActivity().bindService(intent, connection, getActivity().BIND_AUTO_CREATE);
+        getActivity().startService(intent);
         orderRV = binding.getRoot().findViewById(R.id.orderRecyclerView);
 
 
@@ -133,6 +148,11 @@ public class CardFragment extends Fragment {
                                    userModel.setOrders(order);
                                    db.collection("users").document(uid).set(userModel);
                                    Toast.makeText(getContext(), "Order placed", Toast.LENGTH_SHORT).show();
+                                   getActivity().sendBroadcast(new Intent(MainActivity.CHECKOUT_SOUND));
+                                   notificationService.sendNotification("Order placed", "Your order at " + Calendar.getInstance().getTime() + " has been placed");
+                                   buildRecyclerView();
+                                   calculatePrice();
+
                                } else {
                                    Log.d("TAG", "Error getting documents: ", task1.getException());
                                }
@@ -172,6 +192,7 @@ public class CardFragment extends Fragment {
                                 discount = discountModel.getDiscountPercentage();
                                 Toast.makeText(getContext(), "Discount applied", Toast.LENGTH_SHORT).show();
                                 calculatePrice();
+                                getActivity().sendBroadcast(new Intent(MainActivity.COUPON_SOUND));
                                 break;
                             }
                         }

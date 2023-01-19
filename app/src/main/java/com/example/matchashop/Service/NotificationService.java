@@ -51,7 +51,7 @@ public class NotificationService  extends Service {
     {
         Notification notification = new NotificationCompat.Builder(this,
                 CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.drawable.ic_baseline_shopping_cart_24)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

@@ -19,6 +19,8 @@ import com.example.matchashop.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     public static final String CLICK_SOUND = "CLICK";
+    public static final String CHECKOUT_SOUND = "CHECKOUT";
+    public static final String COUPON_SOUND = "COUPON";
 
     private ActivityMainBinding binding;
 
