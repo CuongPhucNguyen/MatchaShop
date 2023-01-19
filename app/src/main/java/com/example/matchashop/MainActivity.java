@@ -1,5 +1,6 @@
 package com.example.matchashop;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.Button;
 
 import com.example.matchashop.ui.main.SectionsPagerAdapter;
 import com.example.matchashop.databinding.ActivityMainBinding;
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 

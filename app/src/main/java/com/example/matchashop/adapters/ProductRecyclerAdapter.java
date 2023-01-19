@@ -4,10 +4,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.matchashop.R;
+import com.example.matchashop.models.ProductModel;
 import com.example.matchashop.models.productQuantity;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -52,14 +56,44 @@ public class ProductRecyclerAdapter
         productQuantity childItem
                 = ChildItemList.get(position);
 
-        // For the created instance, set title.
-        // No need to set the image for
-        // the ImageViews because we have
-        // provided the source for the images
-        // in the layout file itself
-        childViewHolder
-                .ChildItemTitle
-                .setText(childItem.getProductId());
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("products").document(childItem.getProductId()).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                ProductModel item = task.getResult().toObject(ProductModel.class);
+                assert item != null;
+
+
+                // For the created instance, set title.
+                // No need to set the image for
+                // the ImageViews because we have
+                // provided the source for the images
+                // in the layout file itself
+                childViewHolder
+                        .ChildItemTitle
+                        .setText(item.getProductName());
+
+                childViewHolder
+                        .ChildItemPrice
+                        .setText(String.valueOf(item.getProductPrice() * childItem.getQuantity()));
+
+                childViewHolder
+                        .ChildItemQuantity
+                        .setText(String.valueOf(item.getProductPrice()));
+
+
+                Picasso.get().load(item.getProductPhotoTitle()).into(childViewHolder.ChildItemImage);
+
+
+
+            }
+        });
+
+
+
+
+
+
     }
 
     @Override
@@ -82,13 +116,17 @@ public class ProductRecyclerAdapter
             extends RecyclerView.ViewHolder {
 
         TextView ChildItemTitle;
+        TextView ChildItemPrice;
+        TextView ChildItemQuantity;
+        ImageView ChildItemImage;
 
         ChildViewHolder(View itemView)
         {
             super(itemView);
-            ChildItemTitle
-                    = itemView.findViewById(
-                    R.id.orderedProductName);
+            ChildItemTitle = itemView.findViewById(R.id.orderedProductName);
+            ChildItemPrice = itemView.findViewById(R.id.orderedProductPrice);
+            ChildItemQuantity = itemView.findViewById(R.id.orderedProductQuantity);
+            ChildItemImage = itemView.findViewById(R.id.orderedProductImage);
         }
     }
 }

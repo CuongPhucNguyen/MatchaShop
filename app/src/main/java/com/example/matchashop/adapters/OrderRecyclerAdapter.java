@@ -2,6 +2,8 @@ package com.example.matchashop.adapters;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.matchashop.R;
 import com.example.matchashop.models.OrderModel;
+import com.example.matchashop.models.ProductModel;
+import com.example.matchashop.models.productQuantity;
 
 import java.util.List;
 
@@ -65,7 +69,7 @@ public class OrderRecyclerAdapter
         // as the text for the TextView
         parentViewHolder
                 .ParentItemTitle
-                .setText((CharSequence) parentItem.getOrderDate());
+                .setText(parentItem.getOrderDate().toString());
 
         // Create a layout manager
         // to assign a layout
@@ -100,6 +104,9 @@ public class OrderRecyclerAdapter
                 = new ProductRecyclerAdapter(
                 parentItem
                         .getProducts());
+        for (productQuantity product : parentItem.getProducts()){
+            Log.d("TAG", "PRODUCT: \n" + product.getProductId() + "\n" + product.getQuantity());
+        }
         parentViewHolder
                 .ChildRecyclerView
                 .setLayoutManager(layoutManager);
