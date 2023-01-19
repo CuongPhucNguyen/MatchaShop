@@ -59,7 +59,6 @@ public class BlankFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().sendBroadcast(new Intent(MainActivity.CLICK_SOUND));
-                notificationService.sendNotification("Test", "Test");
                 EditText name = fragView.findViewById(R.id.loginUsernameUser);
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
                 name.setText("test2@gmail.com");
