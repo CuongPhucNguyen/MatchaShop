@@ -12,7 +12,7 @@ import com.example.matchashop.R;
 import com.example.matchashop.models.DiscountModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class CRUDCoupon extends AppCompatActivity {
+public class CreateCoupon extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,22 +25,30 @@ public class CRUDCoupon extends AppCompatActivity {
 
         couponName.setHint("Coupon Name");
         couponCode.setHint("Coupon Code");
-        couponDiscount.setHint("50");
+        couponDiscount.setHint("Discount percentage");
 
 
         Button couponSubmit = findViewById(R.id.couponSubmit);
         couponSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = couponName.getText().toString();
-                String code = couponCode.getText().toString();
-                String discount = couponDiscount.getText().toString();
-                Log.d("Coupon", "discount: " + discount);
+                if (!couponName.getText().toString().equals("") && !couponCode.getText().toString().equals("") && !couponDiscount.getText().toString().equals("")) {
+                    String name = couponName.getText().toString();
+                    String code = couponCode.getText().toString();
+                    String discount = couponDiscount.getText().toString();
+                    Log.d("Coupon", "discount: " + discount);
 
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("coupons").document().set(
-                        new DiscountModel(name, code, Integer.parseInt(discount))
-                );
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("coupons").document().set(
+                            new DiscountModel(name, code, Integer.parseInt(discount))
+                    );
+                    finish();
+                }
+                else {
+                    couponName.setHint("Please Coupon Name");
+                    couponCode.setHint("Please Coupon Code");
+                    couponDiscount.setHint("Please add discount percentage");
+                }
             }
         });
 

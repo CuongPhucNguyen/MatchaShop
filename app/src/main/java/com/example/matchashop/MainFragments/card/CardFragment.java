@@ -139,6 +139,7 @@ public class CardFragment extends Fragment {
                                            }
                                        }
                                    }
+
                                    TextView textView = (TextView) binding.getRoot().findViewById(R.id.finalCost);
                                    String finalCost = textView.getText().toString();
                                    Double finalCostDouble = Double.parseDouble(finalCost);

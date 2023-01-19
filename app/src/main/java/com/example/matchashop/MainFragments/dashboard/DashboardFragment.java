@@ -15,7 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.matchashop.MainFragments.dashboard.AddProducts.AddProduct;
 import com.example.matchashop.MainActivity;
-import com.example.matchashop.MainFragments.dashboard.CouponForm.CRUDCoupon;
+import com.example.matchashop.MainFragments.dashboard.CouponForm.CreateCoupon;
+import com.example.matchashop.MainFragments.dashboard.CouponForm.DeleteCoupon;
 import com.example.matchashop.OrderHistoryActivity;
 import com.example.matchashop.R;
 import com.example.matchashop.models.UserModel;
@@ -60,7 +61,7 @@ public class DashboardFragment extends Fragment {
         addCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CRUDCoupon.class);
+                Intent intent = new Intent(getActivity(), CreateCoupon.class);
                 startActivity(intent);
             }
         });
@@ -71,6 +72,15 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(root.getContext(), OrderHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button deleteCoupon = root.findViewById(R.id.deleteCoupon);
+        deleteCoupon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DeleteCoupon.class);
                 startActivity(intent);
             }
         });

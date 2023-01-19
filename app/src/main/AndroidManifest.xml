@@ -17,6 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".DeleteCoupon"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CouponForm"
             android:exported="false">
             <meta-data
@@ -99,9 +106,17 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainFragments.dashboard.CouponForm.CRUDCoupon"
+            android:name=".MainFragments.dashboard.CouponForm.CreateCoupon"
             android:exported="false"
-            android:label="@string/title_add_product"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
+            android:name=".MainFragments.dashboard.CouponForm.DeleteCoupon"
+            android:exported="false"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"

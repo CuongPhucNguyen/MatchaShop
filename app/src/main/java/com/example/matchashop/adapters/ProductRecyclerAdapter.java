@@ -62,13 +62,6 @@ public class ProductRecyclerAdapter
             if (task.isSuccessful()) {
                 ProductModel item = task.getResult().toObject(ProductModel.class);
                 if(item != null) {
-
-
-                    // For the created instance, set title.
-                    // No need to set the image for
-                    // the ImageViews because we have
-                    // provided the source for the images
-                    // in the layout file itself
                     childViewHolder
                             .ChildItemTitle
                             .setText(item.getProductName());
