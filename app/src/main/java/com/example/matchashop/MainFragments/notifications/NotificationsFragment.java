@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.matchashop.databinding.FragmentNotificationsBinding;
 
+
 public class NotificationsFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;

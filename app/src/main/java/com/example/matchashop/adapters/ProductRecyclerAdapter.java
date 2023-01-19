@@ -61,28 +61,29 @@ public class ProductRecyclerAdapter
         db.collection("products").document(childItem.getProductId()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 ProductModel item = task.getResult().toObject(ProductModel.class);
-                assert item != null;
+                if(item != null) {
 
 
-                // For the created instance, set title.
-                // No need to set the image for
-                // the ImageViews because we have
-                // provided the source for the images
-                // in the layout file itself
-                childViewHolder
-                        .ChildItemTitle
-                        .setText(item.getProductName());
+                    // For the created instance, set title.
+                    // No need to set the image for
+                    // the ImageViews because we have
+                    // provided the source for the images
+                    // in the layout file itself
+                    childViewHolder
+                            .ChildItemTitle
+                            .setText(item.getProductName());
 
-                childViewHolder
-                        .ChildItemPrice
-                        .setText(String.valueOf(item.getProductPrice() * childItem.getQuantity()));
+                    childViewHolder
+                            .ChildItemPrice
+                            .setText(String.valueOf(item.getProductPrice() * childItem.getQuantity()));
 
-                childViewHolder
-                        .ChildItemQuantity
-                        .setText(String.valueOf(item.getProductPrice()));
+                    childViewHolder
+                            .ChildItemQuantity
+                            .setText(String.valueOf(item.getProductPrice()));
 
 
-                Picasso.get().load(item.getProductPhotoTitle()).into(childViewHolder.ChildItemImage);
+                    Picasso.get().load(item.getProductPhotoTitle()).into(childViewHolder.ChildItemImage);
+                }
 
 
 

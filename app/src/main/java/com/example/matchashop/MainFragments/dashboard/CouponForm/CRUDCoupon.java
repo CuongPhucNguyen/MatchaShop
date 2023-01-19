@@ -38,7 +38,7 @@ public class CRUDCoupon extends AppCompatActivity {
                 Log.d("Coupon", "discount: " + discount);
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("Coupons").document().set(
+                db.collection("coupons").document().set(
                         new DiscountModel(name, code, Integer.parseInt(discount))
                 );
             }
