@@ -98,14 +98,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainFragments.dashboard.CouponForm.CouponForm"
-            android:exported="false"
-            android:theme="@style/Theme.Design.Light.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".MainFragments.dashboard.CouponForm.CreateCoupon"
             android:exported="false"
             android:theme="@style/Theme.Design.Light.NoActionBar">

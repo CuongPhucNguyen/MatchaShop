@@ -277,19 +277,7 @@ public class CardFragment extends Fragment {
 
                 DocumentSnapshot documentSnapshot = task.getResult();
                 Log.d("TAG", documentSnapshot.get("cart").toString());
-//                ArrayList<Map<String,Integer>> list = (ArrayList<Map<String,Integer>>) documentSnapshot.get("cart");
                 UserModel userModel = documentSnapshot.toObject(UserModel.class);
-//                int i = 0;
-//                for ( productQuantity productQuantity : userModel.getCart()) {
-//                    String productId = productQuantity.getProductId();
-//                    int quantity = productQuantity.getQuantity();
-//
-//
-//                    productQuantityArrayList.add(new productQuantity(productId, quantity));
-//                    Log.d("TAG", productQuantityArrayList.get(i).getProductId());
-//                    Log.d("TAG", productQuantityArrayList.get(i).getQuantity() + "");
-//                    i++;
-//                }
                 productQuantityArrayList = (ArrayList<productQuantity>) userModel.getCart();
 
 

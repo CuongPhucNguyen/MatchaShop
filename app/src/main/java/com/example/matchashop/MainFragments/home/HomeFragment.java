@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-//        setHasOptionsMenu(true);//Make sure you have this line of code.
+        setHasOptionsMenu(true);//Make sure you have this line of code.
         View root = binding.getRoot();
         
         

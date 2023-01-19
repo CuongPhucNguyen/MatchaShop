@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.matchashop.R;
-import com.example.matchashop.adapters.CouponAdapter;
+import com.example.matchashop.adapters.CouponDeleteAdapter;
 import com.example.matchashop.adapters.OrderAdapter;
 import com.example.matchashop.adapters.ProductAdapter;
 import com.example.matchashop.models.DiscountModel;
@@ -37,7 +37,7 @@ public class DeleteCoupon extends AppCompatActivity {
                     Log.d("TAG", document.getId() + " => " + document.getData());
                     discountModelArrayList.add(document.toObject(DiscountModel.class));
                     discountId.add(document.getId());
-                    couponRV = findViewById(R.id.couponList);
+                    couponRV = findViewById(R.id.couponDeleteList);
                     buildCouponRecyclerView();
                 }
             } else {
@@ -51,7 +51,7 @@ public class DeleteCoupon extends AppCompatActivity {
     public void buildCouponRecyclerView(){
 
 
-        CouponAdapter adapter = new CouponAdapter(discountModelArrayList, db, discountId);
+        CouponDeleteAdapter adapter = new CouponDeleteAdapter(discountModelArrayList, db, discountId);
         Log.d("TAG", "Building executing");
         couponRV.setAdapter(adapter);
         couponRV.setLayoutManager(new LinearLayoutManager(this));
