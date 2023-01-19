@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.matchashop.MainFragments.dashboard.AddProducts.AddProduct;
 import com.example.matchashop.MainActivity;
 import com.example.matchashop.OrderHistoryActivity;
 import com.example.matchashop.R;
@@ -44,6 +45,15 @@ public class DashboardFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String uid = mAuth.getCurrentUser().getUid();
+
+        Button addProduct = root.findViewById(R.id.addProduct);
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddProduct.class);
+                startActivity(intent);
+            }
+        });
 
         Button myOrder = (Button) root.findViewById(R.id.myOrders);
         myOrder.setOnClickListener(new View.OnClickListener() {

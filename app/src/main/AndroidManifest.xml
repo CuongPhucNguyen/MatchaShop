@@ -7,6 +7,7 @@
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +17,19 @@
         android:theme="@style/Theme.MatchaShop"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".AddProduct"
+            android:exported="false"
+            android:label="@string/title_activity_add_product"
+            android:theme="@style/Theme.MatchaShop.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <service
+            android:name=".Service.NotificationService"
+            android:enabled="true" />
         <activity
             android:name=".OrderHistoryActivity"
             android:exported="false">
@@ -58,6 +72,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainFragments.dashboard.AddProducts.AddProduct"
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            android:label="@string/title_add_product">
 
             <meta-data
                 android:name="android.app.lib_name"
