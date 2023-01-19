@@ -49,19 +49,6 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/deleteCoupon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_baseline_close_24"
-            app:layout_constraintEnd_toEndOf="@+id/couponCard"
-            app:layout_constraintTop_toTopOf="@+id/couponCard"
-            app:layout_constraintBottom_toBottomOf="@+id/couponCard">
-
-
-        </ImageView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

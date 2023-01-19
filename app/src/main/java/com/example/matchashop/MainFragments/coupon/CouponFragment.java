@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.matchashop.R;
@@ -25,8 +26,8 @@ public class CouponFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
     private RecyclerView couponRV;
-    ArrayList<DiscountModel> couponArrayList;
-    ArrayList<String> couponIdList;
+    ArrayList<DiscountModel> couponArrayList = new ArrayList<>();
+    ArrayList<String> couponIdList = new ArrayList<>();
     FirebaseFirestore db;
 
 
@@ -53,6 +54,7 @@ public class CouponFragment extends Fragment {
                 CouponAdapter adapter = new CouponAdapter(couponArrayList, db, couponIdList);
                 couponRV = root.findViewById(R.id.couponList);
                 couponRV.setAdapter(adapter);
+                couponRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
             } else {
                 Log.d("TAG", "Error getting documents: ", task.getException());
             }

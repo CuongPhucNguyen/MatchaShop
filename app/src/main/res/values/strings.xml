@@ -4,6 +4,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_coupon">Coupons</string>
     <string name="title_order">Order</string>
     <string name="title_add_product">Add product</string>
     <string name="price">100</string>
