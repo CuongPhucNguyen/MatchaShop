@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.matchashop.R;
 import com.example.matchashop.models.DiscountModel;
@@ -27,6 +28,8 @@ public class CreateCoupon extends AppCompatActivity {
         couponCode.setHint("Coupon Code");
         couponDiscount.setHint("Discount percentage");
 
+        ImageView back = findViewById(R.id.returnButton);
+        back.setOnClickListener(v -> finish());
 
         Button couponSubmit = findViewById(R.id.couponSubmit);
         couponSubmit.setOnClickListener(new View.OnClickListener() {

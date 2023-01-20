@@ -39,6 +39,10 @@ public class AddProduct extends AppCompatActivity {
         productImage.setHint("https://i.imgur.com/jSC0lG1.jpg");
         Picasso.get().load("https://i.imgur.com/jSC0lG1.jpg").into(productImagePreview);
 
+
+        ImageView back = findViewById(R.id.returnButton);
+        back.setOnClickListener(v -> finish());
+
         productImage.addTextChangedListener(new TextWatcher(){
 
             @Override

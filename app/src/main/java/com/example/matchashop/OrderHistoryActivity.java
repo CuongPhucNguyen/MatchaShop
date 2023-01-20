@@ -3,6 +3,7 @@ package com.example.matchashop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,9 @@ public class OrderHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history);
+
+        ImageView back = findViewById(R.id.returnButton);
+        back.setOnClickListener(v -> finish());
 
         RecyclerView
                 ParentRecyclerViewItem

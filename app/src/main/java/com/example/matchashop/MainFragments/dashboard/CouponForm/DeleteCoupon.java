@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.example.matchashop.R;
 import com.example.matchashop.adapters.CouponDeleteAdapter;
@@ -29,6 +30,9 @@ public class DeleteCoupon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coupon_list);
+
+        ImageView back = findViewById(R.id.returnButton);
+        back.setOnClickListener(v -> finish());
 
         db = FirebaseFirestore.getInstance();
         db.collection("coupons").get().addOnCompleteListener(task -> {

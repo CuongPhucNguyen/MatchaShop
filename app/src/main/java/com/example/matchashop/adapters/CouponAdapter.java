@@ -37,7 +37,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.CouponView
     @Override
     public com.example.matchashop.adapters.CouponAdapter.CouponViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d("TAG", "onCreateViewHolder executing");
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coupon_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.delete_coupon, parent, false);
         return new com.example.matchashop.adapters.CouponAdapter.CouponViewHolder(view);
     }
 
