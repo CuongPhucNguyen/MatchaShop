@@ -64,21 +64,17 @@ public class HomeFragment extends Fragment {
         ascendFunc.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                         Toast.makeText(getContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();
                                          buildRecyclerViewForAscendingOrder();
-                                          Toast.makeText(getContext(),"Hello Javatpoint 2",Toast.LENGTH_SHORT).show();
-
                                       }
         });
 
-        /*
         TextView descendFunc = (TextView) binding.getRoot().findViewById(R.id.desFilter);
-        ascendFunc.setOnClickListener(new View.OnClickListener() {
+        descendFunc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // do something
+                buildRecyclerViewForDescendingOrder();
             }
-        });*/
+        });
 
 
         // calling method to
@@ -209,6 +205,60 @@ public class HomeFragment extends Fragment {
                 idList.add(documentSnapshot.getId());
                 productModelArrayList.add(productModel);
             }
+
+            //Sort productModelArrayList by price descending
+            Collections.sort(productModelArrayList, new Comparator<ProductModel>() {
+                @Override
+                public int compare(ProductModel o1, ProductModel o2) {
+                    return Double.compare(o1.getProductPrice(), o2.getProductPrice());
+                }
+            });
+
+
+
+
+
+            // initializing our adapter class.
+            adapter = new ProductAdapter(productModelArrayList, this.getContext(), idList);
+
+            // setting layout manager for our recycler view.
+            productRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+            // setting adapter to our recycler view.
+            productRV.setAdapter(adapter);
+        });
+
+    }
+
+    private void buildRecyclerViewForDescendingOrder() {
+
+        // below line we are creating a new array list
+        productModelArrayList = new ArrayList<ProductModel>();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        CollectionReference docRef = db.collection("products");
+        ArrayList<String> idList = new ArrayList<String>();
+        //iterate through collection
+        docRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                //get data from document
+                ProductModel productModel = documentSnapshot.toObject(ProductModel.class);
+                //add data to array list
+                idList.add(documentSnapshot.getId());
+                productModelArrayList.add(productModel);
+            }
+
+            //Sort productModelArrayList by price ascending
+
+            Collections.sort(productModelArrayList, new Comparator<ProductModel>() {
+                @Override
+                public int compare(ProductModel o1, ProductModel o2) {
+                    return Double.compare(o2.getProductPrice(), o1.getProductPrice());
+                }
+            });
+
+
 
 
 
