@@ -64,14 +64,24 @@ public class AddProduct extends AppCompatActivity {
             }
         });
 
+
         submitProduct.setOnClickListener(v -> {
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("products").document().set(new ProductModel(productName.getText().toString(), productImage.getText().toString(), Integer.parseInt(productPrice.getText().toString()),productDescription.getText().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d("TAG", "DocumentSnapshot successfully written!");
-                }
-            });
+
+            if (productName.getText().toString().equals("") || productPrice.getText().toString().equals("") || productDescription.getText().toString().equals("") || productImage.getText().toString().equals("")) {
+                productName.setHint("Please enter a product name");
+                productPrice.setHint("Please enter a product price");
+                productDescription.setHint("Please enter a product description");
+                productImage.setHint("Please enter a product image");
+            } else {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("products").document().set(new ProductModel(productName.getText().toString(), productImage.getText().toString(), Integer.parseInt(productPrice.getText().toString()),productDescription.getText().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("TAG", "DocumentSnapshot successfully written!");
+                    }
+                });
+            }
+
         });
 
     }

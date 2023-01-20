@@ -61,17 +61,26 @@ public class BlankFragment extends Fragment {
                 getActivity().sendBroadcast(new Intent(MainActivity.CLICK_SOUND));
                 EditText name = fragView.findViewById(R.id.loginUsernameUser);
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
-                mAuth.signInWithEmailAndPassword(name.getText().toString(), password.getText().toString()).addOnCompleteListener(getActivity(), task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("CREATION", "signInWithEmail:success");
-                        Intent intent = new Intent(fragView.getContext(), BottomNavigationActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Log.w("CREATION", "signInWithEmail:failure", task.getException());
-                        Toast.makeText(fragView.getContext(), "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+                if (name.getText().toString().equals("") || password.getText().toString().equals("")) {
+                    name.setHint("Please fill in email");
+                    password.setHint("Please fill in password");
+                } else {
+                    mAuth.signInWithEmailAndPassword(name.getText().toString(), password.getText().toString()).addOnCompleteListener(getActivity(), task -> {
+                        if (task.isSuccessful()) {
+                            Log.d("CREATION", "signInWithEmail:success");
+                            Intent intent = new Intent(fragView.getContext(), BottomNavigationActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Log.w("CREATION", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(fragView.getContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
+
             }
         });
 
