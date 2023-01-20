@@ -49,51 +49,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <ImageView
-                    android:id="@+id/addQuantity"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_baseline_add_circle_outline_24">
-
-                </ImageView>
-
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content">
-
-                </Space>
-
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/orderQuantity"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="1"
-                    android:textSize="28dp">
+                    android:layout_height="wrap_content"
+                    android:text="Product Quantity"
+                    android:textColor="@color/black"
+                    android:padding="8dp">
 
 
                 </TextView>
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content">
-
-                </Space>
-
-                <ImageView
-                    android:id="@+id/subtractQuantity"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_baseline_remove_circle_outline_24">
-
-                </ImageView>
 
                 <Button
                     android:id="@+id/removeFromCart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Remove" />

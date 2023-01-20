@@ -83,17 +83,6 @@
                 android:text="ORDER HISTORY"
                 android:textSize="16dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Button
-                android:id="@+id/setting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:text="setting" />
-
         </LinearLayout>
 
         <Space
