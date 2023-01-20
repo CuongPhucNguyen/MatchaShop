@@ -11,24 +11,14 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="20dp"
-            android:text="Item Cost: "
-            android:textSize="20dp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
             android:id="@+id/itemCosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="Item Cost"
-            android:textAlignment="textEnd"
-            android:textSize="20dp"
+            android:text="ITEM COST:"
+            android:textAlignment="textStart"
+            android:layout_marginStart="20dp"
+            android:textSize="18dp"
             android:textStyle="bold">
 
         </TextView>
@@ -46,20 +36,28 @@
             android:layout_height="wrap_content"
 
             android:layout_marginStart="20dp"
-            android:text="Discount Code:"
-            android:textSize="20dp"
+            android:text="DISCOUNT CODE:"
+            android:textSize="18dp"
             android:textStyle="bold">
 
         </TextView>
 
+
+        <Space
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+
         <EditText
             android:id="@+id/couponCode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:textAlignment="textEnd"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="" />
 
     </LinearLayout>
 
@@ -68,8 +66,9 @@
         android:id="@+id/applyCoupon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Apply coupon" />
+        android:layout_gravity="right"
+        android:text="Apply coupon"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,8 +80,8 @@
             android:layout_height="wrap_content"
 
             android:layout_marginStart="20dp"
-            android:text="Total: "
-            android:textSize="25dp"
+            android:text="TOTAL PRICE: "
+            android:textSize="20dp"
             android:textStyle="bold">
 
         </TextView>
@@ -103,18 +102,32 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="50dp">
-
+        android:layout_height="20dp">
     </Space>
-
 
     <Button
         android:id="@+id/purchaseButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="CHECK OUT">
 
     </Button>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp">
+    </Space>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp">
+    </Space>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerView"

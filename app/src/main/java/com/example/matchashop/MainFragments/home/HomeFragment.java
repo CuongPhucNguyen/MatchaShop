@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -145,12 +146,6 @@ public class HomeFragment extends Fragment {
         // below line we are creating a new array list
         productModelArrayList = new ArrayList<ProductModel>();
 
-//        // below line is to add data to our array list.
-//        productModelArrayList.add(new ProductModel("Apple"));
-//        productModelArrayList.add(new ProductModel("Banana"));
-//        productModelArrayList.add(new ProductModel("Avocado"));
-//        productModelArrayList.add(new ProductModel("Fuck you"));
-//        productModelArrayList.add(new ProductModel("You! Bandit."));
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         CollectionReference docRef = db.collection("products");
@@ -173,19 +168,8 @@ public class HomeFragment extends Fragment {
             // setting adapter to our recycler view.
             productRV.setAdapter(adapter);
         });
-        // initializing our adapter class.
-//        adapter = new ProductAdapter(productModelArrayList, HomeFragment.this.getContext());
-//
-//        // adding layout manager to our recycler view.
-//        LinearLayoutManager manager = new LinearLayoutManager(this.getContext());
-//        productRV.setHasFixedSize(true);
-//
-//        // setting layout manager
-//        // to our recycler view.
-//        productRV.setLayoutManager(manager);
-//
-//        // setting adapter to
-//        // our recycler view.
-//        productRV.setAdapter(adapter);
+
     }
+
+
 }
