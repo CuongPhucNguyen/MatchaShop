@@ -6,13 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
@@ -27,7 +28,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class HomeFragment extends Fragment {
 
@@ -36,6 +41,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView productRV;
     private ProductAdapter adapter;
     private ArrayList<ProductModel> productModelArrayList;
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,13 +54,32 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);//Make sure you have this line of code.
         View root = binding.getRoot();
         
-        
-
 
         // this.getActivity().setContentView(R.layout.fragment_home);
 
         // initializing our variables.
         productRV = binding.getRoot().findViewById(R.id.idRVProducts);
+
+        TextView ascendFunc = (TextView) binding.getRoot().findViewById(R.id.asFilter);
+        ascendFunc.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                         Toast.makeText(getContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();
+                                         buildRecyclerViewForAscendingOrder();
+                                          Toast.makeText(getContext(),"Hello Javatpoint 2",Toast.LENGTH_SHORT).show();
+
+                                      }
+        });
+
+        /*
+        TextView descendFunc = (TextView) binding.getRoot().findViewById(R.id.desFilter);
+        ascendFunc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // do something
+            }
+        });*/
+
 
         // calling method to
         // build recycler view.
@@ -67,7 +93,6 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu,@NonNull MenuInflater inflater) {
@@ -122,16 +147,8 @@ public class HomeFragment extends Fragment {
             // displaying a toast message as no data found.
             Toast.makeText(this.getContext(), "No Data Found..", Toast.LENGTH_SHORT).show();
 
-
-
-
             //Below line is to clear the recycler view of the search result
-//            adapter.nullList();
-
-
-
-
-
+            // adapter.nullList();
 
         } else {
 
@@ -140,6 +157,9 @@ public class HomeFragment extends Fragment {
             adapter.filterList(filteredlist);
         }
     }
+
+
+
 
     private void buildRecyclerView() {
 
@@ -159,6 +179,39 @@ public class HomeFragment extends Fragment {
                 idList.add(documentSnapshot.getId());
                 productModelArrayList.add(productModel);
             }
+            // initializing our adapter class.
+            adapter = new ProductAdapter(productModelArrayList, this.getContext(), idList);
+
+            // setting layout manager for our recycler view.
+            productRV.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+            // setting adapter to our recycler view.
+            productRV.setAdapter(adapter);
+        });
+
+    }
+
+    private void buildRecyclerViewForAscendingOrder() {
+
+        // below line we are creating a new array list
+        productModelArrayList = new ArrayList<ProductModel>();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        CollectionReference docRef = db.collection("products");
+        ArrayList<String> idList = new ArrayList<String>();
+        //iterate through collection
+        docRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                //get data from document
+                ProductModel productModel = documentSnapshot.toObject(ProductModel.class);
+                //add data to array list
+                idList.add(documentSnapshot.getId());
+                productModelArrayList.add(productModel);
+            }
+
+
+
             // initializing our adapter class.
             adapter = new ProductAdapter(productModelArrayList, this.getContext(), idList);
 
