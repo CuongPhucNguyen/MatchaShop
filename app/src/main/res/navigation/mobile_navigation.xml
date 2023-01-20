@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_order"
         android:name="com.example.matchashop.MainFragments.card.CardFragment"
-        android:label="@string/title_order"
+        android:label="@string/title_cart"
         tools:layout="@layout/fragment_card" />
 
     <fragment
@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.matchashop.MainFragments.coupon.CouponFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_coupon"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

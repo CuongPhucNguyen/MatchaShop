@@ -61,8 +61,6 @@ public class BlankFragment extends Fragment {
                 getActivity().sendBroadcast(new Intent(MainActivity.CLICK_SOUND));
                 EditText name = fragView.findViewById(R.id.loginUsernameUser);
                 EditText password = fragView.findViewById(R.id.loginPasswordUser);
-                name.setText("test2@gmail.com");
-                password.setText("123456");
                 mAuth.signInWithEmailAndPassword(name.getText().toString(), password.getText().toString()).addOnCompleteListener(getActivity(), task -> {
                     if (task.isSuccessful()) {
                         Log.d("CREATION", "signInWithEmail:success");
