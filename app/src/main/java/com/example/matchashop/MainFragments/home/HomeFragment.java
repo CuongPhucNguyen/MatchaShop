@@ -210,6 +210,16 @@ public class HomeFragment extends Fragment {
                 productModelArrayList.add(productModel);
             }
 
+            for (int i = 0; i < productModelArrayList.size(); i++) {
+                for (int j = i + 1; j < productModelArrayList.size(); j++) {
+                    if (productModelArrayList.get(i).getProductPrice() > productModelArrayList.get(j).getProductPrice()) {
+                        ProductModel temp = productModelArrayList.get(i);
+                        productModelArrayList.set(i, productModelArrayList.get(j));
+                        productModelArrayList.set(j, temp);
+                    }
+                }
+            }
+
 
 
             // initializing our adapter class.
